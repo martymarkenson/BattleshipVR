@@ -4,19 +4,25 @@
     <meta charset="utf-8">
     <title>BattleshipVR</title>
     <script src="aframe-v0.3.2.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <a-plane rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="2 0 0" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="-2 0 0" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="-2 0 -2" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="0 0 -2" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="2 0 -2" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="-2 0 -4" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-      <a-plane position="2 0 -4" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"></a-plane>
-
+      <a-entity id="row1" layout="type: line; margin: 2" rotation="-90 0 0" position="-2 0 0">
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+      </a-entity>
+      <a-entity id="row2" layout="type: line; margin: 2" rotation="-90 0 0" position="-2 0 -2">
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+      </a-entity>
+      <a-entity id="row2" layout="type: line; margin: 2" rotation="-90 0 0" position="-2 0 2">
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+        <a-plane width="1" height="1" color="#7BC8A4"></a-plane>
+      </a-entity>
       <a-sky color="#ECECEC"></a-sky>
       <a-entity position="0 0 3.8">
         <a-camera></a-camera>
@@ -25,4 +31,3 @@
   </body>
 
 </html>
-
