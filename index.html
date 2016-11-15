@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>BattleshipVR</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="battleshipVR.js"></script>
-    <script src="aframe-v0.3.2.min.js"></script>
-    <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/2.3.0/nunjucks.min.js"></script>
-  </head>
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <title>BattleshipVR</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="battleshipVR.js"></script>
+        <script src="aframe-v0.3.2.min.js"></script>
+        <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/2.3.0/nunjucks.min.js"></script>
+        <script src="place-ship.js"></script>
+    </head>
+<body>
     <a-scene>
         <a-assets>
             <script id="grid" type="text/x-nunjucks-template">
@@ -20,31 +21,31 @@
                         rotation="-90 0 0"
                         width="1" 
                         height="1" 
-                        color="{{ color }}">
+                        color="{{ color }}"
+                        place-ship="target: #battleship">
                     </a-plane>
                 {% endfor %}
             {% endfor %}
             </script>
         </a-assets>
     
-        <a-entity id="opponent-grid" position="0 20 -20" rotation="90 0 0">
+        <a-entity id="opponent-grid" position="0 20 0" rotation="90 0 0">
             <a-entity template="src: #grid" data-color="#ff0000"></a-entity>
         </a-entity>   
-        <a-entity id="player-grid" position = "0 0 -20" >
+        <a-entity id="player-grid" position = "0 0 0" >
             <a-entity template="src: #grid" data-color="#0040ff"></a-entity>
         </a-entity> 
     
-        <a-box color="#999999" position="0 1 -4" depth="5" height="2" width="1"></a-box>
+        <a-box id="battleship" material="color: #999999" position="0 1 0" depth="5" height="2" width="1"></a-box>
     
         <a-sky color="#ffffff"></a-sky>
      
-        <a-entity id="camera" position="10 2 1" camera look-controls>
+        <a-entity id="camera" position="10 2 20" camera look-controls>
             <a-cursor id="cursor"
                 animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
                 animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
                 event-set__1="_event: mouseenter; color: springgreen"
-                event-set__2="_event: mouseleave; color: black"
-                raycaster="objects: .link">
+                event-set__2="_event: mouseleave; color: black">
             </a-cursor>
         </a-entity>
     </a-scene>
