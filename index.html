@@ -11,35 +11,42 @@
   </head>
   <body>
     <a-scene>
-      <a-assets>
-        <script id="grid" type="text/x-nunjucks-template">
-          {% for x in range(0, 10) %}
-            {% for z in range(0, 10) %}
-              <a-plane  position="{{x * 2 }} 0 {{ z * 2 }}"
+        <a-assets>
+            <script id="grid" type="text/x-nunjucks-template">
+            {% for x in range(0, 10) %}
+                {% for y in range(0, 10) %}
+                    <a-plane
+                        position="{{x * 2 }} 0 {{ y * 2 }}"
                         rotation="-90 0 0"
                         width="1" 
                         height="1" 
                         color="{{ color }}">
-              </a-plane>
+                    </a-plane>
+                {% endfor %}
             {% endfor %}
-          {% endfor %}
-        </script>
-          
-    </a-assets>
+            </script>
+        </a-assets>
     
-    <a-entity id="opponent-grid" position="0 20 -20" rotation="90 0 0">
-        <a-entity template="src: #grid" data-color="#ff0000"></a-entity>
-    </a-entity>   
-    <a-entity id="player-grid" position = "0 0 -20" >
-        <a-entity template="src: #grid" data-color="#0040ff"></a-entity>
-    </a-entity> 
+        <a-entity id="opponent-grid" position="0 20 -20" rotation="90 0 0">
+            <a-entity template="src: #grid" data-color="#ff0000"></a-entity>
+        </a-entity>   
+        <a-entity id="player-grid" position = "0 0 -20" >
+            <a-entity template="src: #grid" data-color="#0040ff"></a-entity>
+        </a-entity> 
     
-    <a-sky color="#ECECEC"></a-sky>
+        <a-box color="#999999" position="0 1 -4" depth="5" height="2" width="1"></a-box>
     
-    <a-entity position="10 2 1">
-        <a-camera></a-camera>
-    </a-entity>
+        <a-sky color="#ffffff"></a-sky>
+     
+        <a-entity id="camera" position="10 2 1" camera look-controls>
+            <a-cursor id="cursor"
+                animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                event-set__1="_event: mouseenter; color: springgreen"
+                event-set__2="_event: mouseleave; color: black"
+                raycaster="objects: .link">
+            </a-cursor>
+        </a-entity>
     </a-scene>
   </body>
-
 </html>
