@@ -6,22 +6,22 @@ AFRAME.registerComponent('rotate-ship', {
  
     init: function () {
         var data = this.data;
-        var flag = data.flag;
-        var rotation;
+        var position = data.target.getAttribute("position");
         this.el.addEventListener('click', function () {
-            console.log(flag);
-            if(flag) {
+            console.log(data.target.getAttribute("vertical"));
+            
+            if(data.target.getAttribute("vertical")=="true") {
                 data.target.setAttribute("rotation", {
                     x:0,
                     y:-90,
                     z:0});
-                flag = false;
+                data.target.setAttribute("vertical", "false");
                 } else {
                 data.target.setAttribute("rotation", {
                     x:0,
                     y:0,
                     z:0});
-                flag = true;
+                data.target.setAttribute("vertical", "true");
                 }
             });
         }
