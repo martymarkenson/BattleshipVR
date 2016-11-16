@@ -9,6 +9,7 @@
         <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/2.3.0/nunjucks.min.js"></script>
         <script src="place-ship.js"></script>
+        <script src="rotate-ship.js"></script>
     </head>
 <body>
     <a-scene>
@@ -40,11 +41,11 @@
     
         <a-box id="battleship" material="color: #999999" position="0 1 2" depth="5" height="2" width="1"></a-box>
         
-        
+        <a-plane id = "rotate" position= "10 0 20" rotation= "-90 0 0" width= "4"  height= "1"  color= "#007f00" rotate-ship="target: #battleship"></a-plane>
     
         <a-sky color="#ffffff"></a-sky>
      
-        <a-entity id="camera" position="10 2 20" camera look-controls>
+        <a-entity id="camera" position="10 5 20" camera look-controls>
             <a-cursor id="cursor"
                 animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
                 animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
