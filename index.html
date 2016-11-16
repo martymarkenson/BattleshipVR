@@ -13,30 +13,34 @@
 <body>
     <a-scene>
         <a-assets>
-            <script id="grid" type="text/x-nunjucks-template">
+            <script id="enemyGrid" type="text/x-nunjucks-template">
             {% for x in range(0, 10) %}
                 {% for y in range(0, 10) %}
-                    <a-plane
-                        position="{{x * 2 }} 0 {{ y * 2 }}"
-                        rotation="-90 0 0"
-                        width="1" 
-                        height="1" 
-                        color="{{ color }}"
-                        place-ship="target: #battleship">
-                    </a-plane>
+                       <a-entity
+                            template = "src: enemy-grid-point.template; type: handlebars"
+                            data-position="{{x * 2 }} 0 {{ y * 2 }}">
+                        </a-entity>
+                {% endfor %}
+            {% endfor %}
+            </script>
+            <script id="playerGrid" type="text/x-nunjucks-template">
+            {% for x in range(0, 10) %}
+                {% for y in range(0, 10) %}
+                       <a-entity
+                            template = "src: player-grid-point.template; type: handlebars"
+                            data-position="{{x * 2 }} 0 {{ y * 2 }}">
+                        </a-entity>
                 {% endfor %}
             {% endfor %}
             </script>
         </a-assets>
     
-        <a-entity id="opponent-grid" position="0 20 0" rotation="90 0 0">
-            <a-entity template="src: #grid" data-color="#ff0000"></a-entity>
-        </a-entity>   
-        <a-entity id="player-grid" position = "0 0 0" >
-            <a-entity template="src: #grid" data-color="#0040ff"></a-entity>
-        </a-entity> 
+        <a-entity position="0 20 0" rotation="90 0 0" template="src: #enemyGrid"></a-entity>  
+        <a-entity position = "0 0 0" template="src: #playerGrid"></a-entity>
     
-        <a-box id="battleship" material="color: #999999" position="0 1 0" depth="5" height="2" width="1"></a-box>
+        <a-box id="battleship" material="color: #999999" position="0 1 2" depth="5" height="2" width="1"></a-box>
+        
+        
     
         <a-sky color="#ffffff"></a-sky>
      
