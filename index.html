@@ -39,7 +39,9 @@
         <a-entity position="0 20 0" rotation="90 0 0" template="src: #enemyGrid"></a-entity>  
         <a-entity position = "0 0 0" template="src: #playerGrid"></a-entity>
     
-        <a-box id="battleship" material="color: #999999" position="0 1 2" depth="5" height="2" width="1" vertical="true"></a-box>
+        <a-entity id="battleship" position="0 1 0" vertical="true">
+            <a-box material="color: #999999" position="0 0 2"  depth="5" height="2" width="1"></a-box>
+        </a-entity>
         
         <a-plane id = "rotate" position= "10 0 20" rotation= "-90 0 0" width= "4"  height= "1"  color= "#007f00" rotate-ship="target: #battleship; flag: true"></a-plane>
     
