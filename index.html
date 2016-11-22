@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <title>BattleshipVR</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="battleshipVR.js"></script>
         <script src="aframe-v0.3.2.min.js"></script>
         <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/2.3.0/nunjucks.min.js"></script>
-        <script src="place-ship.js"></script>
         <script src="rotate-ship.js"></script>
+        <script src="set-ship.js"></script>
+        <script src="app.js"></script>
     </head>
 <body>
     <a-scene>
@@ -36,15 +36,16 @@
             </script>
         </a-assets>
     
+        <a-entity id="playerBoard" position = "0 0 0" template="src: #playerGrid"></a-entity>
         <a-entity position="0 20 0" rotation="90 0 0" template="src: #enemyGrid"></a-entity>  
-        <a-entity position = "0 0 0" template="src: #playerGrid"></a-entity>
+        
     
-        <a-entity id="battleship" position="0 1 0" vertical="true">
+        <a-entity id="cruiser" position="0 1 0" vertical="true">
             <a-box material="color: #999999" position="0 0 2"  depth="5" height="2" width="1"></a-box>
         </a-entity>
         
-        <a-plane id = "rotate" position= "10 0 20" rotation= "-90 0 0" width= "4"  height= "1"  color= "#007f00" rotate-ship="target: #battleship; flag: true"></a-plane>
-    
+        <a-plane id = "rotate" position= "10 0 20" rotation= "-90 0 0" width= "4"  height= "1"  color= "#007f00" rotate-ship="target: #cruiser; flag: true"></a-plane>
+        
         <a-sky color="#ffffff"></a-sky>
      
         <a-entity id="camera" position="10 5 20" camera look-controls>
@@ -52,7 +53,8 @@
                 animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
                 animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
                 event-set__1="_event: mouseenter; color: springgreen"
-                event-set__2="_event: mouseleave; color: black">
+                event-set__2="_event: mouseleave; color: black"
+                raycaster="objects: .playerGrid">
             </a-cursor>
         </a-entity>
     </a-scene>
