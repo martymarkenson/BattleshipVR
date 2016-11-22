@@ -1,8 +1,10 @@
 <a-plane
+    class = "playerGrid"
     position= "{{ position }}"
     rotation= "-90 0 0"
     width= "1" 
     height= "1" 
-    color= "#0000ff"
-    place-ship="target: #battleship">>
+    color= "#747677"
+    onmouseenter="hoverShip()"
+    onclick="moveShip()">
 </a-plane>
